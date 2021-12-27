@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { BasicBox, DerivedBox, Box, defaultTheme } from './box';
+import { BasicBox, DerivedBox, BrokenBox, FixedBox, defaultTheme } from './box';
 
 export const MyBasicBox = () => {
   return (
@@ -19,7 +19,15 @@ export const MyDerivedBox = () => {
 export const MyBrokenBox = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Box>hello world!</Box>
+      <BrokenBox>hello world!</BrokenBox>
+    </ThemeProvider>
+  );
+}
+
+export const MyFixedBox = () => {
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <FixedBox>hello world!</FixedBox>
     </ThemeProvider>
   );
 }

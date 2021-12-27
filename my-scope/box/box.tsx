@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 
 export type BoxProps = ThemeProps & {
   /**
@@ -32,14 +32,36 @@ export const DerivedBox = styled(BasicBox)({
   padding: ({theme}) => theme.sizes.M,
 })
 
-export function Box({theme, children}: BoxProps) {
+export function DerivedBoxWithChildren({children}: BoxProps) {
   return (
-    <BasicBox
+    <DerivedBox>
+      {children}
+    </DerivedBox>
+  )
+}
+
+export function BrokenBox({theme, children}: BoxProps) {
+  return (
+    <DerivedBox
       style={{
-        padding:theme.sizes.M
+        padding: theme.sizes.M
       }}
     >
       {children}
-    </BasicBox>
+    </DerivedBox>
   )
 }
+
+function Box({theme, children}: BoxProps) {
+  return (
+    <DerivedBox
+      style={{
+        padding: theme.sizes.M
+      }}
+    >
+      {children}
+    </DerivedBox>
+  )
+}
+
+export const FixedBox = withTheme(Box);
