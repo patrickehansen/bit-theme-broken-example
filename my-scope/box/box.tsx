@@ -35,7 +35,9 @@ export const DerivedBox = styled(BasicBox)({
 export function Box({theme, children}: BoxProps) {
   return (
     <BasicBox
-      padding={theme.sizes.M}
+      style={{
+        padding:theme.sizes.M
+      }}
     >
       {children}
     </BasicBox>
